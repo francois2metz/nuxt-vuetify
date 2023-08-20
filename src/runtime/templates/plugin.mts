@@ -1,5 +1,6 @@
 import { defineNuxtPlugin } from '#app'
 import { createVuetify } from 'vuetify'
+import { aliases, mdi } from 'vuetify/iconsets/mdi-svg';
 
 const isDev = process.env.NODE_ENV === "development"
 const options = JSON.parse('<%= JSON.stringify(options) %>')
@@ -16,6 +17,14 @@ options.directives = directives
     options.components = { ...options.components, ...labs}
   '<% } %>'
 '<% } %>'
+
+options.icons = {
+  defaultSet: 'mdi',
+  aliases,
+  sets: {
+    mdi,
+  },
+};
 
 export default defineNuxtPlugin(nuxtApp => {
   const vuetify = createVuetify(options)
